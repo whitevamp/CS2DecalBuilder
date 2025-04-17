@@ -1,0 +1,126 @@
+```markdown
+# 🎨 CS2DecalBuilder
+
+A GUI-based Python tool for converting and preparing custom image decals for use in **Cities: Skylines II** mods. Easily convert your PNG/JPG files into properly structured decal assets with adjusted metadata and folder structure.
+
+---
+
+## ✨ Features
+
+- ✅ Simple **Tkinter GUI** with text input + file/folder browser support  
+- ✅ Converts JPG/JPEG to PNG (with proper transparency and resizing)  
+- ✅ Adjusts mesh size values in a template JSON based on image dimensions  
+- ✅ Renames and structures output folders/files automatically  
+- ✅ Places image and decal.json in unique folders (e.g., `tree456/_BaseColorMap.png`)  
+- ✅ Fully compatible with **CS2 modding requirements** (via ExtraAssetImporter)
+
+---
+
+## 🖥️ Requirements
+
+- Python 3.8+
+- [Pillow](https://pypi.org/project/Pillow/)  
+  ```bash
+  pip install pillow
+  ```
+
+---
+
+## 🚀 Getting Started
+
+1. Clone or download the repo  
+2. Install dependencies (`pip install pillow`)  
+3. Run the tool  
+   ```bash
+   python CS2DecalBuilder.py
+   ```
+
+---
+
+## 🧰 How To Use
+
+1. Launch the tool  
+2. Select:
+   - 📁 Source folder (image files)
+   - 📁 Destination folder (structured output)
+   - 📄 Template JSON file (base decal format)
+   - ✍️ Prefix (used for folder naming like `tree456`)
+3. Click **Start Processing**
+
+---
+
+## 🧩 Compatibility with Cities: Skylines II
+
+This tool is designed to generate decal folders compatible with the **[ExtraAssetImporter](https://github.com/AlphaGaming7780/ExtraAssetsImporter)** mod.
+
+### ✅ Required for in-game usage:
+- [Download on GitHub](https://github.com/AlphaGaming7780/ExtraAssetsImporter)
+- [Or from Paradox Mods](https://mods.paradoxplaza.com/mods/80529/Windows)
+
+### 📁 Install Decals Here:
+```bash
+C:\Users\USERNAME\AppData\LocalLow\Colossal Order\Cities Skylines II\ModsData\ExtraAssetsImporter\CustomDecals\CategoryName
+```
+
+Replace `USERNAME` with your Windows username.  
+Make sure to use an appropriate **CategoryName** (see [EAI Wiki – Category Names](https://github.com/AlphaGaming7780/ExtraAssetsImporter/wiki/Custom-Decals)).
+
+---
+
+## 🧪 Output Example
+
+```
+destination_folder/
+├── tree456/
+│   ├── _BaseColorMap.png
+│   └── decal.json
+├── tree901/
+│   ├── _BaseColorMap.png
+│   └── decal.json
+```
+
+---
+
+## 📐 Mesh Size Calculation
+
+Automatically determines mesh values from the texture resolution using rules like:
+
+| Resolution       | Mesh Size Output      |
+|------------------|------------------------|
+| 512 x 512        | `"x": 4, "z": 4`       |
+| 1024 x 1536      | `"x": 6, "z": 9`       |
+| 2048 x 512       | `"x": 16, "z": 4`      |
+
+---
+
+## ⚠️ Limitations
+
+This script was built and tested for creating **WallDecor** assets.  
+It may work with other decal categories, but:
+
+> ❌ It does **not** generate `_MaskMap.png` or `_NormalMap.png` files.  
+> ✅ It only creates a `_BaseColorMap.png`.
+
+For best results, use categories that **do not** require those extra maps.
+
+---
+
+## ❗ Troubleshooting
+
+- **Unity errors?** Small or oddly sized images are padded/resized to avoid texture initialization failures
+- **Black images in game?** Ensure you're not using formats or dimensions that Unity can't interpret — stick to common resolutions like 512x512, 1024x1024, 1024x1536, etc.
+- **See also:** [EAI Wiki – Custom Decals](https://github.com/AlphaGaming7780/ExtraAssetsImporter/wiki/Custom-Decals)
+
+---
+
+## 📄 License
+
+MIT — use freely, credit appreciated!
+
+---
+
+## 🙌 Credits & Support
+
+This project was created to simplify custom decal workflows for **Cities: Skylines II** using [ExtraAssetImporter](https://github.com/AlphaGaming7780/ExtraAssetsImporter).  
+Feedback and PRs welcome!
+```
