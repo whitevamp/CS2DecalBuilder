@@ -7,12 +7,14 @@ A GUI-based Python tool for converting and preparing custom image decals for use
 
 ## ✨ Features
 
-- ✅ Simple **Tkinter GUI** with text input + file/folder browser support  
-- ✅ Converts JPG/JPEG to PNG (with proper transparency and resizing)  
-- ✅ Adjusts mesh size values in a template JSON based on image dimensions  
-- ✅ Renames and structures output folders/files automatically  
-- ✅ Places image and decal.json in unique folders (e.g., `tree456/_BaseColorMap.png`)  
-- ✅ Fully compatible with **CS2 modding requirements** (via ExtraAssetImporter)
+- ✅ Simple graphical interface (built with `tkinter`)
+- 🧠 Automatic resizing and padding of textures to ensure compatibility
+- 🛠️ Automatic mesh size calculation based on image dimensions
+- 🔁 Batch processes entire folders of `.png`, `.jpg`, or `.jpeg` images
+- 🧾 JSON output generated from included template
+- 🗂️ Automatically organizes output into CS2-compatible folder structures
+- 📝 Saves user preferences for convenience
+- 🧪 Optional debug logging for developers or power users
 
 ---
 
@@ -45,6 +47,7 @@ A GUI-based Python tool for converting and preparing custom image decals for use
    - 📁 Destination folder (structured output)
    - 📄 Template JSON file (base decal format)
    - ✍️ Prefix (used for folder naming like `tree456`)
+   - ✍️ Choose a **Category** (used to create a subfolder).
 3. Click **Start Processing**
 
 ---
@@ -90,6 +93,21 @@ Automatically determines mesh values from the texture resolution using rules lik
 | 512 x 512        | `"x": 4, "z": 4`       |
 | 1024 x 1536      | `"x": 6, "z": 9`       |
 | 2048 x 512       | `"x": 16, "z": 4`      |
+
+---
+## 🐛 Logging Options
+
+The script supports optional logging for both regular use and debugging:
+
+```bash
+python CS2DecalBuilder.py --debug --logfile debug_output.log
+```
+
+- Default log file: `process.log`
+- Debug log includes:
+  - File processing status
+  - Mesh size values (`x`, `z`)
+  - Resize operations
 
 ---
 
